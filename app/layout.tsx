@@ -1,8 +1,9 @@
 import './globals.css';
 import { GeistSans } from 'geist/font/sans';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
 import AuthButton from '../components/AuthButton';
 import Logo from '@/components/Logo';
-import Link from 'next/link';
 import type { ReactNode } from 'react';
 
 const defaultUrl = process.env.VERCEL_URL
@@ -23,10 +24,14 @@ export default function RootLayout({
   children: ReactNode
 }) {
   return (
-    <html lang="en" className={GeistSans.className}>
-      <body className="min-h-screen flex flex-col items-center justify-between font-sans antialiased bg-background text-foreground ">
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn(
+        'min-h-screen flex flex-col items-center justify-between font-sans antialiased',
+        `${GeistSans.variable}`
+      )}>
         <header className="w-full flex flex-col items-center fixed top-0 z-40">
-          <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16 bg-background/95 backdrop-blur-sm">
+          <nav
+            className="w-full flex justify-center border-b border-b-foreground/10 h-16 bg-background/95 backdrop-blur-sm">
             <div className="w-full max-w-6xl flex justify-between items-center p-3 text-sm text-foreground">
               <Logo />
               <ul className="flex gap-1">
