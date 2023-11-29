@@ -2,7 +2,9 @@ import './globals.css';
 import { GeistSans } from 'geist/font/sans';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import AuthButton from '../components/AuthButton';
+import ThemeProvider from '@/components/ThemeProvider';
+import ThemeToggleButton from '@/components/ThemeToggleButton';
+import AuthButton from '@/components/AuthButton';
 import Logo from '@/components/Logo';
 import type { ReactNode } from 'react';
 
@@ -29,37 +31,47 @@ export default function RootLayout({
         'min-h-screen flex flex-col items-center justify-between font-sans antialiased',
         `${GeistSans.variable}`
       )}>
-        <header className="w-full flex flex-col items-center fixed top-0 z-40">
-          <nav
-            className="w-full flex justify-center border-b border-b-foreground/10 h-16 bg-background/95 backdrop-blur-sm">
-            <div className="w-full max-w-6xl flex justify-between items-center p-3 text-sm text-foreground">
-              <Logo />
-              <ul className="flex gap-1">
-                <li>
-                  <Link
-                    href="/"
-                    className="py-2 px-3 flex rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <AuthButton />
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </header>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <header className="w-full flex flex-col items-center fixed top-0 z-40">
+            <nav
+              className="w-full flex justify-center border-b border-b-foreground/10 h-16 bg-background/95 backdrop-blur-sm">
+              <div className="w-full max-w-6xl flex justify-between items-center p-3 text-sm text-foreground">
+                <Logo />
+                <ul className="flex gap-1">
+                  <li>
+                    <Link
+                      href="/"
+                      className="py-2 px-3 flex rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
+                    >
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <AuthButton />
+                  </li>
+                  <li>
+                    <ThemeToggleButton />
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </header>
 
-        <main className="w-full flex-1 flex flex-col items-center">
-          {children}
-        </main>
+          <main className="w-full flex-1 flex flex-col items-center">
+            {children}
+          </main>
 
-        <footer className="w-full flex flex-col items-center pt-12 pb-16 border-t border-t-foreground/10 text-sm">
-          <h2>
-            Footer
-          </h2>
-        </footer>
+          <footer className="w-full flex flex-col items-center pt-12 pb-16 border-t border-t-foreground/10 text-sm">
+            <h2>
+              Footer
+            </h2>
+          </footer>
+        </ThemeProvider>
       </body>
     </html>
   );
