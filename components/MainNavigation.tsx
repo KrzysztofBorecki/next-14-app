@@ -1,36 +1,51 @@
-import { cookies } from 'next/headers';
-import { createClient } from '@/lib/supabase/server';
+'use client';
+
+import { usePathname } from 'next/navigation';
 import { signOut } from '@/app/actions';
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import Logo from '@/components/Logo';
 import ThemeToggleButton from '@/components/ThemeToggleButton';
+import { Home } from 'lucide-react';
 
-export default async function MainNavigation() {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
-  const { data: { user } } = await supabase.auth.getUser();
+export default function MainNavigation({
+  userEmail
+}: {
+  userEmail: string | undefined
+}) {
+  const pathname = usePathname();
 
   return (
     <header className="w-full flex flex-col items-center fixed top-0 z-40">
-      <nav
-        className="w-full flex justify-center border-b border-b-foreground/10 h-16 bg-background/95 backdrop-blur-sm">
-        <div className="w-full max-w-6xl flex justify-between items-center p-3 text-sm text-foreground">
+      <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 text-sm">
+        <div className="w-full max-w-6xl flex justify-between items-center p-3">
           <Logo />
-          <ul className="flex gap-1">
+          <ul className="flex items-center gap-1">
             <li>
               <Link
                 href="/"
-                className="py-2 px-3 flex rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
+                className={cn(
+                  buttonVariants({ variant: 'ghost' }),
+                  'px-2 md:px-4',
+                  'hover:bg-transparent hover:text-foreground/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0',
+                  pathname === '/' ? 'text-foreground' : 'text-foreground/60'
+                )}
               >
-                Home
+                <p className="invisible w-0 sm:visible sm:w-auto">Home</p>
+                <Home className="sm:invisible sm:w-0" />
               </Link>
             </li>
             <li>
-              {user ? (
-                <div className="flex items-center gap-4">
-                  Hi, {user.email}!
+              {userEmail ? (
+                <div className="flex items-center gap-4 font-medium text-foreground/60">
+                  Hi, {userEmail}!
                   <form action={signOut}>
-                    <button className="py-2 px-4 rounded-md no-underline bg-btn-background hover:bg-btn-background-hover">
+                    <button className={cn(
+                      buttonVariants({ variant: 'ghost' }),
+                      'px-2 md:px-4',
+                      'hover:bg-transparent hover:text-foreground/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0',
+                    )}>
                       Logout
                     </button>
                   </form>
@@ -38,7 +53,12 @@ export default async function MainNavigation() {
               ) : (
                 <Link
                   href="/login"
-                  className="py-2 px-3 flex rounded-md no-underline bg-btn-background hover:bg-btn-background-hover"
+                  className={cn(
+                    buttonVariants({ variant: 'ghost' }),
+                    'px-2 md:px-4',
+                    'hover:bg-transparent hover:text-foreground/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0',
+                    pathname === '/login' ? 'text-foreground' : 'text-foreground/60',
+                  )}
                 >
                   Login
                 </Link>

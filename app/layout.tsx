@@ -1,5 +1,7 @@
 import './globals.css';
 import { GeistSans } from 'geist/font/sans';
+import { cookies } from 'next/headers';
+import { createClient } from '@/lib/supabase/server';
 import { cn } from '@/lib/utils';
 import ThemeProvider from '@/components/ThemeProvider';
 import MainNavigation from '@/components/MainNavigation';
@@ -17,11 +19,15 @@ export const metadata = {
   authors: { name: 'Krzysztof Borecki', url: 'https://github.com/K3orecki' },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: ReactNode
 }) {
+  const cookieStore = cookies();
+  const supabase = createClient(cookieStore);
+  const { data: { user } } = await supabase.auth.getUser();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(
@@ -34,7 +40,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <MainNavigation />
+          <MainNavigation userEmail={user?.email}/>
           <main className="w-full flex-1 flex flex-col items-center">
             {children}
           </main>
