@@ -13,4 +13,28 @@ const SectionsContainer = React.forwardRef<
 ));
 SectionsContainer.displayName = 'SectionsContainer';
 
-export { SectionsContainer };
+const SectionPrimaryHeading = React.forwardRef<
+  HTMLHeadingElement,
+  React.HTMLAttributes<HTMLHeadingElement>
+>(({ className, ...props }, ref) => (
+  <h1
+    ref={ref}
+    className={cn('px-12 py-5 md:py-10 text-3xl md:text-6xl tracking-tighter font-bold', className)}
+    {...props}
+  />
+));
+SectionPrimaryHeading.displayName = 'SectionPrimaryHeading';
+
+const SectionSecondaryHeading = React.forwardRef<
+  HTMLHeadingElement,
+  React.HTMLAttributes<HTMLHeadingElement>
+>(({ className, ...props }, ref) => (
+  <h2
+    ref={ref}
+    className={cn('px-12 py-10 text-xl md:text-2xl font-bold', className)}
+    {...props}
+  />
+));
+SectionSecondaryHeading.displayName = 'SectionSecondaryHeading';
+
+export { SectionsContainer, SectionPrimaryHeading, SectionSecondaryHeading };
