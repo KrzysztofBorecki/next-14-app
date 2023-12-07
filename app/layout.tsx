@@ -31,7 +31,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(
-        'min-h-screen flex flex-col items-center justify-between font-sans antialiased',
+        'min-h-screen flex flex-col font-sans antialiased',
         `${GeistSans.variable}`
       )}>
         <ThemeProvider
@@ -41,7 +41,7 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <MainNavigation userEmail={user?.email}/>
-          <main className="w-full flex-1 flex flex-col items-center">
+          <main className="w-full flex-1 flex flex-col items-center animate-in relative">
             {children}
           </main>
           <footer className="w-full flex flex-col items-center pt-12 pb-16 border-t border-t-foreground/10 text-sm">
