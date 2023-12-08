@@ -37,4 +37,31 @@ const SectionSecondaryHeading = React.forwardRef<
 ));
 SectionSecondaryHeading.displayName = 'SectionSecondaryHeading';
 
-export { SectionsContainer, SectionPrimaryHeading, SectionSecondaryHeading };
+const SectionContent = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      'flex flex-col md:flex-row justify-between gap-4',
+      className
+    )}
+    {...props}
+  />
+));
+SectionContent.displayName = 'SectionContent';
+
+const SectionText = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn('px-6 leading-relaxed', className)}
+    {...props}
+  />
+));
+SectionText.displayName = 'SectionText';
+
+export { SectionsContainer, SectionPrimaryHeading, SectionSecondaryHeading, SectionContent, SectionText };
