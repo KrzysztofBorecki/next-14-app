@@ -78,6 +78,7 @@ module.exports = {
       },
       height: {
         navbar: 'var(--navbar)',
+        hero: `calc(100svh - var(--navbar))`,
       },
     },
   },
