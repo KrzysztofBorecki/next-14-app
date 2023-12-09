@@ -76,6 +76,10 @@ module.exports = {
         sans: ['var(--font-geist-sans)', ...fontFamily.sans],
         mono: ['var(--font-geist-mono)', ...fontFamily.mono],
       },
+      height: {
+        navbar: 'var(--navbar)',
+        hero: `calc(100svh - var(--navbar))`,
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],

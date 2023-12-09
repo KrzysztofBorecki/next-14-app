@@ -17,9 +17,9 @@ export default function MainNavigation({
   const pathname = usePathname();
 
   return (
-    <header className="w-full flex flex-col items-center fixed top-0 z-40">
-      <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 text-sm">
-        <div className="w-full max-w-6xl flex justify-between items-center p-3">
+    <header className="w-full sticky top-0 z-40">
+      <nav className="w-full border-b border-b-foreground/10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 text-sm">
+        <div className="container h-navbar flex justify-between items-center">
           <Logo />
           <ul className="flex items-center gap-1">
             <li>
