@@ -1,7 +1,10 @@
 import { headers, cookies } from 'next/headers';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
+import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import { Button, buttonVariants } from '@/components/ui/button';
+import { SectionsContainer } from '@/components/Section';
 
 export default function Login({
   searchParams,
@@ -53,10 +56,14 @@ export default function Login({
   };
 
   return (
-    <div className="flex flex-1 flex-col w-full gap-64 text-foreground pt-28 sm:pt-16 px-8 sm:max-w-md">
+    <SectionsContainer className="sm:max-w-md py-6">
       <Link
         href="/"
-        className="absolute top-20 right-8 group py-2 px-4 rounded-md no-underline text-foreground bg-btn-background hover:bg-btn-background-hover flex items-center group text-sm"
+        className={cn(
+          buttonVariants({ variant: 'ghost' }),
+          "absolute top-3 right-8 z-50 group",
+          "bg-transparent hover:bg-transparent text-foreground/60 hover:text-foreground/80"
+        )}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -99,9 +106,9 @@ export default function Login({
           placeholder="••••••••"
           required
         />
-        <button className="bg-blue-700 rounded-md px-4 py-2 text-foreground mb-2">
-          Sign In
-        </button>
+        <Button variant="default">
+          Log In
+        </Button>
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
             <span className="w-full border-t" />
@@ -112,18 +119,15 @@ export default function Login({
           </span>
           </div>
         </div>
-        <button
-          formAction={signUp}
-          className="border border-foreground/20 rounded-md px-4 py-2 text-foreground mb-2"
-        >
+        <Button formAction={signUp} variant="secondary">
           Sign Up
-        </button>
+        </Button>
         {searchParams?.message && (
           <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
             {searchParams.message}
           </p>
         )}
       </form>
-    </div>
+    </SectionsContainer>
   );
 }
