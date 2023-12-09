@@ -46,7 +46,7 @@ export default function MainNavigation({
                       'px-2 md:px-4',
                       'hover:bg-transparent hover:text-foreground/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0',
                     )}>
-                      Logout
+                      Log Out
                     </button>
                   </form>
                 </div>
@@ -60,7 +60,7 @@ export default function MainNavigation({
                     pathname === '/login' ? 'text-foreground' : 'text-foreground/60',
                   )}
                 >
-                  Login
+                  Log In
                 </Link>
               )}
             </li>
