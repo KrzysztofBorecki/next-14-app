@@ -1,7 +1,5 @@
 import './globals.css';
 import { GeistSans } from 'geist/font/sans';
-import { cookies } from 'next/headers';
-import { createClient } from '@/lib/supabase/server';
 import { cn } from '@/lib/utils';
 import ThemeProvider from '@/components/ThemeProvider';
 import MainNavigation from '@/components/MainNavigation';
@@ -18,16 +16,11 @@ export const metadata = {
   keywords: ['Next.js', 'React', 'TypeScript', 'JavaScript', 'Supabase', 'Tailwind CSS'],
   authors: { name: 'Krzysztof Borecki', url: 'https://github.com/K3orecki' },
 };
-
 export default async function RootLayout({
   children,
 }: {
   children: ReactNode
 }) {
-  const cookieStore = cookies();
-  const supabase = createClient(cookieStore);
-  const { data: { user } } = await supabase.auth.getUser();
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(
@@ -40,7 +33,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <MainNavigation userEmail={user?.email}/>
+          <MainNavigation/>
           <main className="w-full flex-1 flex flex-col items-center animate-in relative">
             {children}
           </main>
