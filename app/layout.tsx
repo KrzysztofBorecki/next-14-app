@@ -35,7 +35,7 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <MainNavigation />
-          <main className="w-full flex-1 flex flex-col items-center animate-in relative">
+          <main className="w-full flex-1 flex flex-col items-center relative">
             {children}
           </main>
           <footer className="w-full flex flex-col items-center pt-12 pb-16 border-t border-t-foreground/10 text-sm">
