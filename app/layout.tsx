@@ -1,5 +1,5 @@
-import './globals.css';
-import { GeistSans } from 'geist/font/sans';
+import '@/app/globals.css';
+import { fontSans } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import ThemeProvider from '@/components/ThemeProvider';
 import MainNavigation from '@/components/MainNavigation';
@@ -16,6 +16,7 @@ export const metadata = {
   keywords: ['Next.js', 'React', 'TypeScript', 'JavaScript', 'Supabase', 'Tailwind CSS'],
   authors: { name: 'Krzysztof Borecki', url: 'https://github.com/K3orecki' },
 };
+
 export default async function RootLayout({
   children,
 }: {
@@ -24,8 +25,8 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(
-        'min-h-screen flex flex-col font-sans antialiased',
-        `${GeistSans.variable}`
+        'min-h-screen flex flex-col',
+        `${fontSans.variable} font-sans antialiased`
       )}>
         <ThemeProvider
           attribute="class"
@@ -33,7 +34,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <MainNavigation/>
+          <MainNavigation />
           <main className="w-full flex-1 flex flex-col items-center animate-in relative">
             {children}
           </main>
