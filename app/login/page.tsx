@@ -1,6 +1,6 @@
 import { headers, cookies } from 'next/headers';
-import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
+import { createClient } from '@/lib/supabase/server';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { Button, buttonVariants } from '@/components/ui/button';
@@ -61,8 +61,7 @@ export default function Login({
         href="/"
         className={cn(
           buttonVariants({ variant: 'ghost' }),
-          "absolute top-3 right-8 z-50 group",
-          "bg-transparent hover:bg-transparent text-foreground/60 hover:text-foreground/80"
+          'absolute top-3 right-8 z-50 group bg-transparent hover:bg-transparent text-foreground/60 hover:text-foreground/80'
         )}
       >
         <svg
@@ -84,7 +83,7 @@ export default function Login({
       </Link>
 
       <form
-        className="animate-in flex-1 flex flex-col w-full justify-center gap-4 text-foreground"
+        className="flex-1 flex flex-col w-full justify-center gap-4 text-foreground"
         action={signIn}
       >
         <label className="text-md" htmlFor="email">
