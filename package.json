@@ -11,6 +11,8 @@
     "sbtypes": "npx supabase gen types typescript --local > ./app/schema.ts"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.1.2",
+    "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-slot": "^1.0.2",
     "@supabase/ssr": "latest",
