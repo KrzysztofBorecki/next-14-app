@@ -8,7 +8,8 @@
     "sbstart": "npx supabase start",
     "sbstop": "npx supabase stop",
     "sbstopreset": "npx supabase stop --no-backup",
-    "sbtypes": "npx supabase gen types typescript --local > ./app/schema.ts"
+    "sbtypes": "npx supabase gen types typescript --local > ./lib/supabase/database.types.ts",
+    "sbreset": "npx supabase db reset"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.1.2",
