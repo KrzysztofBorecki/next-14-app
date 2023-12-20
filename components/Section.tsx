@@ -7,7 +7,7 @@ const SectionsContainer = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn('container flex-1 flex flex-col gap-64', className)}
+    className={cn('container flex-1 flex flex-col', className)}
     {...props}
   />
 ));
