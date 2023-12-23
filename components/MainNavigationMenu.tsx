@@ -27,8 +27,23 @@ export default function MainNavigationMenu({
             pathname === '/' ? 'text-foreground' : 'text-foreground/60'
           )}
         >
-          <p className="invisible w-0 sm:visible sm:w-auto">Home</p>
+          <p className="invisible w-0 sm:visible sm:w-auto">
+            Home
+          </p>
           <Home className="sm:invisible sm:w-0" />
+        </Link>
+      </li>
+      <li>
+        <Link
+          href="/team"
+          className={cn(
+            buttonVariants({ variant: 'ghost' }),
+            'px-2 md:px-4',
+            'hover:bg-transparent hover:text-foreground/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0',
+            pathname === '/team' ? 'text-foreground' : 'text-foreground/60'
+          )}
+        >
+          Team
         </Link>
       </li>
       <li>
