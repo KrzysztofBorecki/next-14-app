@@ -47,6 +47,19 @@ export default function MainNavigationMenu({
         </Link>
       </li>
       <li>
+        <Link
+          href="/pricing"
+          className={cn(
+            buttonVariants({ variant: 'ghost' }),
+            'px-2 md:px-4',
+            'hover:bg-transparent hover:text-foreground/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0',
+            pathname === '/pricing' ? 'text-foreground' : 'text-foreground/60'
+          )}
+        >
+          Pricing
+        </Link>
+      </li>
+      <li>
         {userEmail ? (
           <div className="flex items-center gap-4 font-medium text-foreground/60">
             Hi, {userEmail}!
