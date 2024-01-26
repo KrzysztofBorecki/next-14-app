@@ -3,6 +3,7 @@ import { fontSans } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import ThemeProvider from '@/components/ThemeProvider';
 import MainNavigation from '@/components/MainNavigation';
+import Footer from '@/components/Footer';
 import type { ReactNode } from 'react';
 
 const defaultUrl = process.env.VERCEL_URL
@@ -38,11 +39,7 @@ export default async function RootLayout({
           <main className="w-full flex-1 flex flex-col items-center relative">
             {children}
           </main>
-          <footer className="w-full flex flex-col items-center pt-12 pb-16 border-t border-t-foreground/10 text-sm">
-            <h2>
-              Footer
-            </h2>
-          </footer>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
