@@ -12,7 +12,7 @@ export default async function MainNavigation() {
 
   return (
     <header className="w-full sticky top-0 z-40">
-      <nav className="w-full border-b border-b-foreground/10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 text-sm">
+      <nav className="w-full border-b border-border/60 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 text-sm">
         <div className="container h-navbar flex justify-between items-center">
           <Logo />
           <MainNavigationMenu userEmail={user?.email}/>
